@@ -25,15 +25,14 @@ class App extends Component {
   }
 
   refreshClick(){
-    console.log(this.state.games)
+    
 
   }
 
   getMatches(){
 
     var arr = [];
-    //console.log(this.state.games);
-    
+   
 
     var gameKeys = Object.keys(this.state.games);
 
@@ -44,7 +43,7 @@ class App extends Component {
 
 
       this.setState({gameHTML: <div className = "Matches-Holder">{arr.map(item => <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr}/>)}</div>})
-      console.log(this.state.gameHTML);
+      
     }
 
   render() {
@@ -56,12 +55,12 @@ class App extends Component {
 
         <header className="App-header">
           <img src={PHI} className="Top-logo" alt="logo" onClick={this.refreshClick} />
-          <a href = "https://www.reddit.com/r/nflstreams/"><h1 className="App-title"></h1></a>
+         
         </header>
  
 
           
-          {this.state.gameHTML}
+          {(this.state.gameHTML != null) ? this.state.gameHTML : <span className="Loading"> Loading Games... </span>}
 
           
 	      <div className = "TagLine">
