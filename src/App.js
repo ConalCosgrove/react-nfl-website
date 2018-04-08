@@ -60,7 +60,7 @@ class App extends Component {
  
 
           
-          {(this.state.gameHTML != null) ? this.state.gameHTML : <span className="Loading"> Loading Games... </span>}
+          {(this.state.gameHTML != null && false) ? this.state.gameHTML : <span className="Loading"> Loading Games...<small className = "Smol"> (If you see this screen for a long time, try running unsafe scripts in right of your url bar) </small> </span>}
 
           
 	      <div className = "TagLine">
