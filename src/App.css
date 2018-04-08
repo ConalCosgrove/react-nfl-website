@@ -1,0 +1,134 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 10s linear;
+  height: 50px;
+}
+.Top-logo {
+  height: 80px;
+}
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+.Stat-Holder{
+  display:flex;
+}
+
+.Stat-Section{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Matches-Holder {
+  display:flex;
+  background: white;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Collapsable {
+
+}
+
+.MatchBox {
+  color: black;
+  text-decoration: none;
+  background: #bdc3c7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:5px;
+}
+
+.MatchBox:hover{
+  background: #95a5a6;;
+
+}
+
+.TeamVersus{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.TagLine {
+  display:flex;
+  justify-content: center;
+}
+
+.Team-Image {
+  height:180px;
+  animation: Team-logo-grow 2s ease-in;
+
+}
+
+.Team-Image:hover{
+  opacity: 0.8
+}
+
+.Scoreboard{
+  display:flex;
+  flex-direction: row;
+}
+
+.ScoreLeft{
+
+  margin-right:100px;
+}
+.ScoreRight{
+  margin-left:100px;
+}
+
+a:link    {
+  /* Applies to all unvisited links */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+a:visited {
+  /* Applies to all visited links */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+a:hover   {
+  /* Applies to links under the pointer */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+a:active  {
+  /* Applies to activated links */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes Team-logo-grow {
+  from {transform: scale(0.5);
+  to {transform: scale(0.8);}}
+}

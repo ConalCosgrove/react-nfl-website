@@ -1,0 +1,16 @@
+{
+    "0": {
+        "away": {
+            "abbr": "PHI",
+            "name": "Philadelphia Eagles",
+            "score": 41
+        },
+        "clock": "00:09",
+        "home": {
+            "abbr": "NE",
+            "name": "New England Patriots",
+            "score": 33
+        },
+        "quarter": "Final"
+    }
+}
