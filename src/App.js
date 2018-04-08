@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
 import logo from "./logo.svg"
-
 import Match from './Match.js'
 import StatSection from './StatSection.js'
 import './App.css';
@@ -9,10 +7,14 @@ import data from './data.json'
 import PHI from './images/PHI.svg';
 
 class App extends Component {
+  constructor(){
+    super()
+    this.refreshClick =this.refreshClick.bind(this)
+  }
 
-
-
-
+  refreshClick(){
+    console.log("Refresh Clicked")
+  }
   render() {
 
   
@@ -23,14 +25,14 @@ class App extends Component {
       });
 
 
-      return <div className = "Matches-Holder">{arr.map(item => <Match team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score} team2score={item.away.score} clock={item.clock} quarter={item.quarter}/>)}</div>
+      return <div className = "Matches-Holder">{arr.map(item => <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score} team2score={item.away.score} clock={item.clock} quarter={item.quarter}/>)}</div>
     }
     return (
       
       <div className="App">
 
         <header className="App-header">
-          <img src={PHI} className="Top-logo" alt="logo" />
+          <img src={PHI} className="Top-logo" alt="logo" onClick={this.refreshClick} />
           <a href = "https://www.reddit.com/r/nflstreams/"><h1 className="App-title"></h1></a>
         </header>
  
