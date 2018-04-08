@@ -43,7 +43,7 @@ class App extends Component {
     }
 
 
-      this.setState({gameHTML: <div className = "Matches-Holder">{arr.map(item => <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.quarter}/>)}</div>})
+      this.setState({gameHTML: <div className = "Matches-Holder">{arr.map(item => <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr}/>)}</div>})
       console.log(this.state.gameHTML);
     }
 
