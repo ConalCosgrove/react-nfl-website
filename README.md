@@ -1,4 +1,4 @@
-# react-nfl-website
+# NFL Live Scores Website
 Project To Display 'Realtime' NFL Scores. Written in ReactJS.
 
 Currently live at https://conal-nfl.herokuapp.com/
