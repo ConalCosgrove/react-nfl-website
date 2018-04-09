@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Match.css';
 
 class Score extends Component { 
 

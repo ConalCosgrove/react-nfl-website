@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import LeftTeam from './LeftTeam.js';
-import RightTeam from './RightTeam.js';
-import Score from './Score.js';
-import './App.css';
+import LeftTeam from './match/LeftTeam.js';
+import RightTeam from './match/RightTeam.js';
+import Score from './match/Score.js';
+import './match/Match.css';
 
 class Match extends Component { 
 

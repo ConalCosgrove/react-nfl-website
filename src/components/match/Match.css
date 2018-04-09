@@ -1,0 +1,79 @@
+.MatchBox {
+  color: black;
+  text-decoration: none;
+  background: #bdc3c7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:5px;
+}
+
+.MatchBox:hover{
+  background: #95a5a6;;
+
+}
+
+.TeamVersus{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.Team-Image {
+  height:150px;
+  animation: Team-logo-grow 2s ease-in;
+
+}
+
+.Team-Image:hover{
+  opacity: 0.8
+}
+
+.Scoreboard{
+  display:flex;
+  flex-direction: row;
+}
+
+.ScoreLeft{
+
+  margin-right:100px;
+}
+.ScoreRight{
+  margin-left:100px;
+}
+
+a:link    {
+  /* Applies to all unvisited links */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+a:visited {
+  /* Applies to all visited links */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+a:hover   {
+  /* Applies to links under the pointer */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+a:active  {
+  /* Applies to activated links */
+  text-decoration:  none;
+  font-weight:      normal;
+  background-color: #ddd;
+  color:            white;
+  } 
+
+
+@keyframes Team-logo-grow {
+  from {transform: scale(0.5);
+  to {transform: scale(0.8);}}
+}

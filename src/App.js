@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from "./logo.svg"
-import Match from './Match.js'
+import logo from "./images/logo.svg"
+import Match from './components/Match.js'
 import axios from 'axios'
 import './App.css';
 import PHI from './images/PHI.svg';

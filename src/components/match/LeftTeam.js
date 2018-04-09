@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './Match.css';
 
 class LeftTeam extends Component { 
 
@@ -7,7 +7,7 @@ class LeftTeam extends Component {
 
 		return(
 			<div>
-				<img src = {require(`./images/${this.props.pic}`)} className = "Team-Image" alt = "Left Team"/>
+				<img src = {require(`../../images/${this.props.pic}`)} className = "Team-Image" alt = "Left Team"/>
 			</div>
 		)
 	}
