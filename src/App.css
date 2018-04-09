@@ -106,29 +106,28 @@ a:link    {
   /* Applies to all unvisited links */
   text-decoration:  none;
   font-weight:      normal;
-  background-color: #ddd;
-  color:            white;
+  color:            black;
+  background-color: white;
   } 
 a:visited {
   /* Applies to all visited links */
   text-decoration:  none;
   font-weight:      normal;
-  background-color: #ddd;
-  color:            white;
+  color:            black;
+  background-color: white;
   } 
 a:hover   {
   /* Applies to links under the pointer */
   text-decoration:  none;
   font-weight:      normal;
-  background-color: #ddd;
-  color:            white;
+  color:            black;
   } 
 a:active  {
   /* Applies to activated links */
   text-decoration:  none;
   font-weight:      normal;
-  background-color: #ddd;
-  color:            white;
+  color:            black;
+  background-color: white;
   } 
 
 

@@ -61,7 +61,7 @@ class App extends Component {
         	{(this.state.gameHTML != null) ? this.state.gameHTML : <span className="Loading"> Loading Games...<small className = "Smol"> (If you see this screen for a long time, try running unsafe scripts in right of your url bar) </small> </span>}
 
 	    	<div className = "TagLine">
-	      		<h3>All Times In GMT. Made with React {"<"}3 </h3>
+	      		<a href = "https://github.com/ConalCosgrove/react-nfl-website"><h3>Made with React by Conal {"<"}3 </h3></a>
 	        	<img src = {logo} className = "App-logo" alt = "logo"/> 
 	    	</div>
       	</div>
