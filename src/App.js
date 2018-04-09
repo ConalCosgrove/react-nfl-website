@@ -16,12 +16,15 @@ class App extends Component {
     }
 
 
-    axios.get('http://www.nfl.com/liveupdate/scores/scores.json')
+    axios.get('https://nfl-app-backend.herokuapp.com/scoreJSON')
     .then(response => {
+      console.log(response);
       this.state.games = response.data;
       this.getMatches();
 
-    })
+    }).catch((err)=> {
+      this.setState({gameHTML: <span className="Loading"> Error: failed to load match data 😞🏈 </span>})
+    });
   }
 
   refreshClick(){
@@ -37,11 +40,15 @@ class App extends Component {
     var gameKeys = Object.keys(this.state.games);
 
     for (var key in gameKeys){
-      
-      arr.push(this.state.games[gameKeys[key]]);
+      console.log(key);
+      if(gameKeys[key] === 'nextupdate'){
+
+      }else{
+        arr.push(this.state.games[gameKeys[key]]);
+      }
     }
 
-
+    console.log(arr);
       this.setState({gameHTML: <div className = "Matches-Holder">{arr.map(item => <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr}/>)}</div>})
       
     }
