@@ -18,7 +18,6 @@ class App extends Component {
 
     axios.get('https://nfl-app-backend.herokuapp.com/scoreJSON')
     .then(response => {
-      console.log(response);
       this.state.games = response.data;
       this.getMatches();
 
@@ -40,7 +39,6 @@ class App extends Component {
     var gameKeys = Object.keys(this.state.games);
 
     for (var key in gameKeys){
-      console.log(key);
       if(gameKeys[key] === 'nextupdate'){
 
       }else{
@@ -48,7 +46,7 @@ class App extends Component {
       }
     }
 
-    console.log(arr);
+   
       this.setState({gameHTML: <div className = "Matches-Holder">{arr.map(item => <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr}/>)}</div>})
       
     }
