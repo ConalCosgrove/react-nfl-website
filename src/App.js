@@ -11,11 +11,12 @@ class App extends Component {
     this.refreshClick =this.refreshClick.bind(this)
     this.getMatches = this.getMatches.bind(this)
     this.state = {
+      switched: false,
       games: {},
       gameHTML : null
     }
 
-    axios.get('https://nfl-app-backend.herokuapp.com/scoreJSON')
+    axios.get('http://www.nfl.com/liveupdate/scores/scores.json')
     .then(response => {
       this.state.games = response.data;
       this.getMatches();
@@ -26,7 +27,73 @@ class App extends Component {
   }
 
   refreshClick(){
-    
+
+          if(!this.state.switched){
+           
+            this.setState({games:{"0":{
+                                "home":{"abbr":"PHI","score":{"T":"51"}},
+                                "away":{"abbr":"GB","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "1":{
+                                "home":{"abbr":"LA","score":{"T":"51"}},
+                                "away":{"abbr":"TEN","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "2":{
+                                "home":{"abbr":"JAX","score":{"T":"51"}},
+                                "away":{"abbr":"LAC","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "3":{
+                                "home":{"abbr":"CIN","score":{"T":"51"}},
+                                "away":{"abbr":"KC","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "4":{
+                                "home":{"abbr":"CLE","score":{"T":"51"}},
+                                "away":{"abbr":"IND","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "5":{
+                                "home":{"abbr":"NYG","score":{"T":"51"}},
+                                "away":{"abbr":"PIT","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "6":{
+                                "home":{"abbr":"SF","score":{"T":"51"}},
+                                "away":{"abbr":"NYJ","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "7":{
+                                "home":{"abbr":"HOU","score":{"T":"51"}},
+                                "away":{"abbr":"MIA","score":{"T":"10"}},
+                                "qtr":"Final","clock":"13:12"
+                            },
+                            "8":{
+                                "home":{"abbr":"MIN","score":{"T":"29"}},
+                                "away":{"abbr":"NO","score":{"T":"24"}},
+                                "qtr":"4","clock":"00:00"
+                            }
+                          },
+                          switched:true
+                        }, this.getMatches)
+                        console.log(this.state.games)
+                        this.getMatches()
+             
+                
+          }else{
+                axios.get('https://nfl-app-backend.herokuapp.com/scoreJSON')
+                          .then(response => {
+                                this.setState({games:response.data})
+                                this.getMatches();
+
+                }).catch((err)=> {
+                  this.setState({gameHTML: <span className="Loading"> Error: failed to load match data</span>})
+                });
+                this.setState({switched:false})
+          }
+          this.getMatches();
 
   }
 

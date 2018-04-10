@@ -22,6 +22,8 @@
 
 .Team-Image {
   height:150px;
+  padding-left: 20px;
+  padding-right:20px;
   animation: Team-logo-grow 2s ease-in;
 
 }
