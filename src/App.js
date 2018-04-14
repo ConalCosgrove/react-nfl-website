@@ -8,54 +8,37 @@ import PHI from './images/PHI.svg';
 class App extends Component {
   constructor(){
     super()
+    this.makeRequest = this.makeRequest.bind(this)
     this.refreshClick =this.refreshClick.bind(this)
-    this.getMatches = this.getMatches.bind(this)
+    this.populateMatches = this.populateMatches.bind(this)
     this.state = {
       switched: false,
       games: {},
       gameHTML : null
     }
+  }
 
-    axios.get('https://nfl-app-backend.herokuapp.com/scoreJSON')
-    .then(response => {
-      this.state.games = response.data;
-      this.getMatches();
-
-    }).catch((err)=> {
-      this.setState({gameHTML: <span className="Loading"> Error: failed to load match data</span>})
-    });
+  componentDidMount(){
+    this.makeRequest("https://nfl-app-backend.herokuapp.com/scoreJSON")
+    this.populateMatches();
   }
 
   refreshClick(){
 
-          if(!this.state.switched){
-            
-            axios.get('https://nfl-app-backend.herokuapp.com/fakescoreJSON')
-                          .then(response => {
-                                this.setState({games:response.data})
-                                this.getMatches();
+    if(!this.state.switched){
 
-            }).catch((err)=> {
-                  this.setState({gameHTML: <span className="Loading"> Error: failed to load match data</span>})
-            });
-            this.setState({switched:true});
-                
-          }else{
-                axios.get('https://nfl-app-backend.herokuapp.com/scoreJSON')
-                          .then(response => {
-                                this.setState({games:response.data})
-                                this.getMatches();
+      this.makeRequest('https://nfl-app-backend.herokuapp.com/fakescoreJSON')
+      this.setState({switched:true});
 
-                }).catch((err)=> {
-                  this.setState({gameHTML: <span className="Loading"> Error: failed to load match data</span>})
-                });
-                this.setState({switched:false})
-          }
-          this.getMatches();
+    }else{
+      this.makeRequest('https://nfl-app-backend.herokuapp.com/scoreJSON')
+      this.setState({switched:false})
+    }
+    this.populateMatches();
 
   }
 
-  getMatches(){
+  populateMatches(){
     var arr = [];
     var gameKeys = Object.keys(this.state.games);
 
@@ -65,32 +48,44 @@ class App extends Component {
       }
     }
     this.setState(	{gameHTML: 	<div className = "Matches-Holder"> 
-    								{arr.map(item => 
-    									<Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr}/>
-    								)}
-    							</div>
-    				}) 
-    }
+      {arr.map(item => 
+       <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
+       team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr}/>
+       )}
+      </div>
+    }) 
+  }
+
+  makeRequest(url){
+    axios.get(url)
+    .then(response => {
+      this.setState({games:response.data})
+      this.populateMatches();
+
+    }).catch((err)=> {
+      this.setState({gameHTML: <span className="Loading"> Error: failed to load match data</span>})
+    });
+  }
 
   render() {
 
 
     return (
-      
+
     	<div className="App">
 
-        	<header className="App-header">
-          		<img src={PHI} className="Top-logo" alt="logo" onClick={this.refreshClick} />
-        	</header>
-          
-        	{(this.state.gameHTML != null) ? this.state.gameHTML : <span className="Loading"> Loading Games...<small className = "Smol"> (If you see this screen for a long time, try running unsafe scripts in right of your url bar) </small> </span>}
+     <header className="App-header">
+     <img src={PHI} className="Top-logo" alt="logo" onClick={this.refreshClick} />
+     </header>
 
-	    	<div className = "TagLine">
-	      		<a href = "https://github.com/ConalCosgrove/react-nfl-website"><h3>Made with React by Conal {"<"}3 </h3></a>
-	        	<img src = {logo} className = "App-logo" alt = "logo"/> 
-	    	</div>
-      	</div>
-    );
+     {(this.state.gameHTML != null) ? this.state.gameHTML : <span className="Loading"> Loading Games...</span>}
+
+     <div className = "TagLine">
+     <a href = "https://github.com/ConalCosgrove/react-nfl-website"><h3>Made with React by Conal {"<"}3 </h3></a>
+     <img src = {logo} className = "App-logo" alt = "logo"/> 
+     </div>
+     </div>
+     );
   }
 }
 
