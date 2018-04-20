@@ -43,17 +43,40 @@ class App extends Component {
     var gameKeys = Object.keys(this.state.games);
 
     for (var key in gameKeys){
+    	this.parseDate(gameKeys[key])
       if(gameKeys[key] !== 'nextupdate'){
         arr.push(this.state.games[gameKeys[key]]);
       }
     }
     this.setState(	{gameHTML: 	<div className = "Matches-Holder"> 
-      {arr.map(item => 
-       <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
-       team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr}/>
-       )}
+      {arr.map((item,index) => {
+      		var match;
+      		var date = this.parseDate(gameKeys[index])
+      		var stringDate = date["day"] + " - " + date["month"] + " - " + date["year"].substring(2,4)
+      		var today = new Date()
+
+      		
+      		if(today.getMonth() >= date["month"] && today.getDate() >= date["day"]){
+      			match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
+		       team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr} date = {stringDate}/>
+   			}else{
+ 				match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
+		       team1score={0} team2score={0} date = {stringDate} stadium = {item.stadium}/>;
+
+   			}
+   			return match;
+   		}
+     )}
+
       </div>
     }) 
+  }
+
+  parseDate(date){
+  	var year = date.substring(0,4)
+  	var month = date.substring(4,6)
+  	var day = date.substring(6,8)
+  	return {"year":year,"month":month,"day":day}
   }
 
   makeRequest(url){
