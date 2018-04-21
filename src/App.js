@@ -54,11 +54,11 @@ class App extends Component {
       		var date = this.parseDate(gameKeys[index])
       		var stringDate = date["day"] + " - " + date["month"] + " - " + date["year"].substring(2,4)
       		var today = new Date()
-
       		
-      		if(today.getMonth() >= date["month"] && today.getDate() >= date["day"] && today.getYear() >= date["year"]){
+      		if((today.getMonth() >= date["month"] && today.getDate() >= date["day"] && ((1900+today.getYear()) == date["year"]))|| (1900 +today.getYear()) >= date["year"]){
+
       			match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
-		       team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr} date = {stringDate}/>
+		       team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr} date = {stringDate} stadium = {item.stadium}/>
    			}else{
  				match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
 		       team1score={0} team2score={0} date = {stringDate} stadium = {item.stadium}/>;
