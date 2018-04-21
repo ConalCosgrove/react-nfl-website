@@ -56,7 +56,7 @@ class App extends Component {
       		var today = new Date()
 
       		
-      		if(today.getMonth() >= date["month"] && today.getDate() >= date["day"]){
+      		if(today.getMonth() >= date["month"] && today.getDate() >= date["day"] && today.getYear() >= date["year"]){
       			match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
 		       team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr} date = {stringDate}/>
    			}else{
