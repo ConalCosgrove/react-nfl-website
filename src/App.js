@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from "./images/logo.svg"
+import octocat from "./images/octocat.png";
 import Match from './components/Match.js'
 import axios from 'axios'
 import './App.css';
@@ -54,7 +54,7 @@ class App extends Component {
       		var date = this.parseDate(gameKeys[index])
       		var stringDate = date["day"] + " - " + date["month"] + " - " + date["year"].substring(2,4)
       		var today = new Date()
-      		
+      		// eslint-disable-next-line
       		if((today.getMonth() >= date["month"] && today.getDate() >= date["day"] && ((1900+today.getYear()) == date["year"]))|| (1900 +today.getYear()) >= date["year"]){
 
       			match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
@@ -104,8 +104,8 @@ class App extends Component {
      {(this.state.gameHTML != null) ? this.state.gameHTML : <span className="Loading"> Loading Games...</span>}
 
      <div className = "TagLine">
-     <a href = "https://github.com/ConalCosgrove/react-nfl-website"><h3>Made with React by Conal {"<"}3 </h3></a>
-     <img src = {logo} className = "App-logo" alt = "logo"/> 
+     <h3>Made with React by Conal {"<"}3 </h3>
+     <a href = "https://github.com/ConalCosgrove/react-nfl-website"><img src = {octocat} className = "App-logo" alt = "logo"/></a>
      </div>
      </div>
      );
