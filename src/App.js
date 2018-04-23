@@ -12,9 +12,10 @@ class App extends Component {
     this.refreshClick =this.refreshClick.bind(this)
     this.populateMatches = this.populateMatches.bind(this)
     this.state = {
+     
       switched: false,
       games: {},
-      gameHTML : null
+      gameHTML : <span className="Loading"> Loading Games...</span>
     }
   }
 
@@ -101,7 +102,7 @@ class App extends Component {
      <img src={PHI} className="Top-logo" alt="logo" onClick={this.refreshClick} />
      </header>
 
-     {(this.state.gameHTML != null) ? this.state.gameHTML : <span className="Loading"> Loading Games...</span>}
+     {this.state.gameHTML}
 
      <div className = "TagLine">
      <h3>Made with React by Conal {"<"}3 </h3>
