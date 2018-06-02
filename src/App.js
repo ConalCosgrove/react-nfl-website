@@ -3,7 +3,7 @@ import octocat from "./images/octocat.png";
 import Match from './components/Match.js'
 import axios from 'axios'
 import './App.css';
-import PHI from './images/PHI.svg';
+import NFL from './images/NFL.svg';
 
 class App extends Component {
   constructor(){
@@ -56,13 +56,18 @@ class App extends Component {
       		var stringDate = date["day"] + " - " + date["month"] + " - " + date["year"].substring(2,4)
       		var today = new Date()
       		// eslint-disable-next-line
-      		if((today.getMonth() >= date["month"] && today.getDate() >= date["day"] && ((1900+today.getYear()) == date["year"]))|| (1900 +today.getYear()) >= date["year"]){
+          if((today.getMonth() >= date["month"] 
+              && today.getDate() >= date["day"] 
+              && ((1900+today.getYear()) == date["year"]))
+                || (1900 +today.getYear()) >= date["year"]){
 
       			match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
-		       team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} quarter={item.qtr} date = {stringDate} stadium = {item.stadium}/>
+                                team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} 
+                                quarter={item.qtr} date = {stringDate} stadium = {item.stadium}
+                    />
    			}else{
- 				match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
-		       team1score={0} team2score={0} date = {stringDate} stadium = {item.stadium}/>;
+ 				  match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
+		      team1score={0} team2score={0} date = {stringDate} stadium = {item.stadium}/>;
 
    			}
    			return match;
@@ -99,13 +104,13 @@ class App extends Component {
     	<div className="App">
 
      <header className="App-header">
-     <img src={PHI} className="Top-logo" alt="logo" onClick={this.refreshClick} />
+     <img src={NFL} className="Top-logo" alt="logo" onClick={this.refreshClick} />
      </header>
 
      {this.state.gameHTML}
 
      <div className = "TagLine">
-     <h3>Made with React by Conal {"<"}3 </h3>
+     {/* <h3>Made with React by Conal {"<"}3 </h3> */}
      <a href = "https://github.com/ConalCosgrove/react-nfl-website"><img src = {octocat} className = "App-logo" alt = "logo"/></a>
      </div>
      </div>
