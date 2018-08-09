@@ -8,6 +8,7 @@ class LeftTeam extends Component {
 		return(
 			<div>
 				<img src = {require(`../../images/${this.props.pic}`)} className = "Team-Image" alt = "Left Team"/>
+        <p>{this.props.teamName}</p> 
 			</div>
 		)
 	}

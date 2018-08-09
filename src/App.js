@@ -63,7 +63,8 @@ class App extends Component {
 
       			match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
                                 team1score={item.home.score.T} team2score={item.away.score.T} clock={item.clock} 
-                                quarter={item.qtr} date = {stringDate} stadium = {item.stadium}
+                                quarter={item.qtr} date = {stringDate} stadium = {item.stadium} team1Name = {item.home.abbr}
+                                team2Name = {item.away.abbr}
                     />
    			}else{
  				  match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 

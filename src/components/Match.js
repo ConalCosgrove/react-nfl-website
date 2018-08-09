@@ -23,9 +23,9 @@ class Match extends Component {
 			<div className='MatchBox'>
 			<h2>{this.props.date}</h2>
 				<div className='TeamVersus'>
-					<LeftTeam className = "LeftTeam" pic = {this.props.team1}/>
+					<LeftTeam className = "LeftTeam" pic = {this.props.team1} teamName = {this.props.team1Name}/>
 					<h1> VS </h1>
-					<RightTeam className = "RightTeam" pic = {this.props.team2}/>
+					<RightTeam className = "RightTeam" pic = {this.props.team2} teamName = {this.props.team2Name}/>
 				</div>
 				
 				
