@@ -4,11 +4,10 @@ import RightTeam from './match/RightTeam.js';
 import Score from './match/Score.js';
 import './match/Match.css';
 
-class Match extends Component { 
-
-	 createStats(){
-		var score;
-		if (this.props.quarter === 'Final' || this.props.quarter === 'Pregame'){
+class Match extends Component {
+  createStats() {
+    let score;
+    if (this.props.quarter === 'Final' || this.props.quarter === 'Pregame') {
 			score =<div> <Score team1score = {this.props.team1score} team2score = {this.props.team2score}></Score> 
 							<div><h3>{this.props.quarter}</h3></div>
 							</div>;
