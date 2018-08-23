@@ -8,9 +8,13 @@ class Match extends Component {
 
 	 createStats(){
 		var score;
-		if(this.props.quarter == null){
+		if (this.props.quarter === 'Final' || this.props.quarter === 'Pregame'){
+			score =<div> <Score team1score = {this.props.team1score} team2score = {this.props.team2score}></Score> 
+							<div><h3>{this.props.quarter}</h3></div>
+							</div>;
+		} else if (this.props.quarter == null){
 			score = <div> <h2> {this.props.stadium} </h2> </div>;
-		}else{
+		} else {
 			score =<div> <Score team1score = {this.props.team1score} team2score = {this.props.team2score}></Score> 
 							<div> <h3>Q : {this.props.quarter} <br/>Clock : {this.props.clock}</h3></div>
 							</div>;
@@ -18,10 +22,11 @@ class Match extends Component {
 		return score;
 	}
 	render(){
-
 		return(
 			<div className='MatchBox'>
-			<h2>{this.props.date}</h2>
+			{this.props.quarter === null ? <h2>{this.props.date}</h2> : 
+			
+			<div className = 'LiveHolder'><h2 style = {{paddingRight: '10px'}} className = 'LiveText'> Live: </h2> <h2>{this.props.stadium}</h2></div>}
 				<div className='TeamVersus'>
 					<LeftTeam className = "LeftTeam" pic = {this.props.team1} teamName = {this.props.team1Name}/>
 					<h1> VS </h1>

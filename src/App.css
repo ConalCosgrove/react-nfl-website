@@ -7,6 +7,14 @@
   //animation: App-logo-spin infinite 10s linear;
   height: 50px;
 }
+
+.LiveText {
+  color: red;
+}
+
+.LiveHolder {
+  display: flex;
+}
 .Top-logo {
   height: 80px;
   padding-top: 20px;
