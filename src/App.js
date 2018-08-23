@@ -58,7 +58,7 @@ class App extends Component {
       		// eslint-disable-next-line
           if((today.getMonth() >= date["month"] 
               && today.getDate() >= date["day"] 
-              && ((1900+today.getYear()) == date["year"]))
+              && ((1900+today.getYear()) === date["year"]))
                 || (1900 +today.getYear()) >= date["year"]){
 
       			match = <Match key={item.away.abbr} team1={item.home.abbr + ".svg"} team2={item.away.abbr + ".svg"} 
