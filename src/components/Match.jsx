@@ -11,7 +11,7 @@ class Match extends Component {
     const {
       quarter, team1score, team2score, clock, stadium,
     } = this.props;
-    if (quarter === 'Final' || quarter === 'Pregame') {
+    if (quarter === 'Pregame') {
       score = (
         <div>
           <Score team1score={team1score} team2score={team2score} />
@@ -20,7 +20,9 @@ class Match extends Component {
           </div>
         </div>
       );
-    } else if (quarter == null) {
+    } else if (quarter === 'Final') {
+      score = <Score team1score={team1score} team2score={team2score} />;
+    } else if (quarter === null) {
       score = (
         <div>
           <h2>
@@ -53,15 +55,16 @@ class Match extends Component {
     } = this.props;
     return (
       <div className="MatchBox">
+        {quarter === null && <h2>{date}</h2>}
+        {quarter === 'Final' && <h2>{stadium}</h2>}
         {
-          quarter === null ? <h2>{date}</h2>
-            : (
-              <div className="LiveHolder">
-                <h2 style={{ paddingRight: '10px' }} className="LiveText"> Live @ </h2>
-                <h2>{stadium}</h2>
-              </div>
-            )
-          }
+          quarter !== null && quarter !== 'Final' && (
+          <div className="LiveHolder">
+            <h2 style={{ paddingRight: '10px' }} className="LiveText"> Live @ </h2>
+            <h2>{stadium}</h2>
+          </div>
+          )
+        }
         <div className="TeamVersus">
           <LeftTeam className="LeftTeam" pic={team1} teamName={team1Name} />
           <h1> VS </h1>
