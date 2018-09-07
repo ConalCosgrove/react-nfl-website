@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import './Match.css';
 
-class LeftTeam extends Component { 
-
-	render(){
-
-		return(
-			<div>
-				<img src = {require(`../../images/${this.props.pic}`)} className = "Team-Image" alt = "Left Team"/>
-        <h2>{this.props.teamName}</h2> 
-			</div>
-		)
-	}
-
-
+function LeftTeam({ teamName, pic }) {
+  return (
+    <div>
+      <img src={require(`../../images/${pic}`)} className="Team-Image" alt="Left Team" />
+      <h2>{teamName}</h2>
+    </div>
+  );
 }
 
+LeftTeam.propTypes = {
+  teamName: PropTypes.string.isRequired,
+  pic: PropTypes.string.isRequired,
+};
 export default LeftTeam;
