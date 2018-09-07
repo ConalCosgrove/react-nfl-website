@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Match.css';
 
-
 function RightTeam({ teamName, pic }) {
   return (
     <div>
