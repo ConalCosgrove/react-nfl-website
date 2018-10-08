@@ -20,7 +20,7 @@ class Match extends Component {
           </div>
         </div>
       );
-    } else if (quarter === 'Final') {
+    } else if (quarter === 'Final' ||  quarter === 'final overtime') {
       score = <Score team1score={team1score} team2score={team2score} />;
     } else if (quarter === null) {
       score = (
@@ -56,9 +56,9 @@ class Match extends Component {
     return (
       <div className="MatchBox">
         {quarter === null && <h2>{date}</h2>}
-        {quarter === 'Final' && <h2>{stadium}</h2>}
+        {(quarter === 'Final' || quarter === 'final overtime')  && <h2>{stadium}</h2>}
         {
-          quarter !== null && quarter !== 'Final' && (
+          quarter !== null && quarter !== 'Final' && quarter !== 'final overtime' && (
           <div className="LiveHolder">
             <h2 style={{ paddingRight: '10px' }} className="LiveText"> Live @ </h2>
             <h2>{stadium}</h2>
