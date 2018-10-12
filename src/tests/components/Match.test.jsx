@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Match from '../../components/Match';
-import renderer from 'react-test-renderer';
-import {shallow} from 'enzyme';
 
 it('renders with all props without crashing', () => {
   const div = document.createElement('div');
