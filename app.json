@@ -1,0 +1,7 @@
+{
+    "name": "NFL Fixtures Live",
+    "description": "A live(ish) updating NFL fixtures site.",
+    "repository": "https://github.com/ConalCosgrove/react-nfl-website",
+    "logo": "https://github.com/ConalCosgrove/react-nfl-website/blob/master/src/images/logo.svg",
+    "keywords": ["node", "express", "static"]
+  }
