@@ -1,4 +1,4 @@
-# NFL Live Scores Website
+# NFL Live Scores Website [![Build](https://travis-ci.org/ConalCosgrove/react-nfl-website.svg?branch=master)]
 Project To Display 'Realtime' NFL Scores. Written in ReactJS.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
