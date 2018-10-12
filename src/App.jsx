@@ -116,7 +116,6 @@ class App extends Component {
         }
       })
       .catch(() => {
-
         !this.isCancelled && this.setState({ gameHTML: <span className="Loading"> Error: failed to load match data</span> });
       });
   }
