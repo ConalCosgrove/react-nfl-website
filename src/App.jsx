@@ -25,6 +25,10 @@ class App extends Component {
     };
   }
 
+  componentWillUnmount(){
+    this.isCancelled = true;
+  }
+
   componentDidMount() {
     this.makeRequest('https://nfl-app-backend.herokuapp.com/scoreJSON');
     this.populateMatches();
@@ -106,11 +110,14 @@ class App extends Component {
   makeRequest(url) {
     axios.get(url)
       .then((response) => {
-        this.setState({ games: response.data });
-        this.populateMatches();
+        if (!this.isCancelled) {
+          this.setState({ games: response.data });
+          this.populateMatches();
+        }
       })
       .catch(() => {
-        this.setState({ gameHTML: <span className="Loading"> Error: failed to load match data</span> });
+
+        !this.isCancelled && this.setState({ gameHTML: <span className="Loading"> Error: failed to load match data</span> });
       });
   }
 
