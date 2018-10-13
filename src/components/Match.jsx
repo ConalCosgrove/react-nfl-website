@@ -20,7 +20,7 @@ class Match extends Component {
           </div>
         </div>
       );
-    } else if (quarter === 'Final' ||  quarter === 'final overtime') {
+    } else if (quarter.toLowerCase() === 'final' ||  quarter.toLowerCase() === 'final overtime') {
       score = <Score team1score={team1score} team2score={team2score} />;
     } else if (quarter === null) {
       score = (
