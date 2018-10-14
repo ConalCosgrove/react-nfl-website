@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import Match from './components/Match';
 import parseDate from './helpers';
 class MatchesHolder extends Component {
-    
-    constructor() {
-        super();
-    }
 
     createMatches() {
         const matches = this.props.matches ? this.props.matches : [];

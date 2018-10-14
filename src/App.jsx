@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import octocat from './images/octocat.png';
-import Match from './components/Match';
 import MatchesHolder from './MatchesHolder';
 import NFL from './images/NFL.svg';
 import './App.css';
@@ -74,7 +73,6 @@ class App extends Component {
   }
 
   render() {
-    const { games } = this.state;
     return (
       <div className="App">
         <header className="App-header">

@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const parseDate = (date) => {
     const year = date.substring(0, 4);
     const month = date.substring(4, 6);
