@@ -11,7 +11,16 @@ class Match extends Component {
     const {
       quarter, team1score, team2score, clock, stadium,
     } = this.props;
-    if (quarter === 'Pregame') {
+    if(!quarter) {
+      score = (
+        <div>
+          <h2>
+            {stadium}
+          </h2>
+        </div>
+      );
+    }
+    else if (quarter === 'Pregame') {
       score = (
         <div>
           <Score team1score={team1score} team2score={team2score} />
@@ -20,17 +29,9 @@ class Match extends Component {
           </div>
         </div>
       );
-    } else if (quarter.toLowerCase() === 'final' ||  quarter.toLowerCase() === 'final overtime') {
+    } else if (quarter.toLowerCase() === 'final' ||  quarter === 'final overtime') {
       score = <Score team1score={team1score} team2score={team2score} />;
-    } else if (quarter === null) {
-      score = (
-        <div>
-          <h2>
-            {stadium}
-          </h2>
-        </div>
-      );
-    } else {
+    }else {
       score = (
         <div>
           <Score team1score={team1score} team2score={team2score} />
