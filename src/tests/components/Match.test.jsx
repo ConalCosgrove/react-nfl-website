@@ -30,6 +30,7 @@ it('renders without quarter prop without crashing', () => {
                       team2Name="Philly"
                       team1score={50}
                       team2score={7}
+                      quarter={null}
                       clock="12:15"
                   />, div);
     ReactDOM.unmountComponentAtNode(div);
@@ -42,6 +43,8 @@ it('renders without quarter prop without crashing', () => {
                       date="14-10-1996" 
                       team1="NE.svg" 
                       team2="PHI.svg" 
+                      team1score={null}
+                      team2score={null}
                       team1Name="Patriots" 
                       team2Name="Philly"
                       quarter="3"

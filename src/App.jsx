@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import octocat from './images/octocat.png';
-import Match from './components/Match';
+import MatchesHolder from './MatchesHolder';
 import NFL from './images/NFL.svg';
 import './App.css';
 
@@ -56,55 +56,7 @@ class App extends Component {
         arr.push(games[gameKeys[key]]);
       }
     }
-    this.setState(
-      {
-        gameHTML:
-        // eslint-disable-next-line
-        <div className="Matches-Holder">
-          {
-            arr.map((item, index) => {
-              let match;
-              const date = App.parseDate(gameKeys[index]);
-              const stringDate = `${date.day} - ${date.month} - ${date.year.substring(2, 4)}`;
-              const today = new Date();
-              if ((today.getMonth() >= date.month
-                && today.getDate() >= date.day
-                && ((1900 + today.getYear()) === date.year))
-                  || (1900 + today.getYear()) >= date.year) {
-                match = (
-                  <Match
-                    key={item.away.abbr}
-                    team1={`${item.home.abbr}.svg`}
-                    team2={`${item.away.abbr}.svg`}
-                    team1score={item.home.score.T}
-                    team2score={item.away.score.T}
-                    clock={item.clock}
-                    quarter={item.qtr}
-                    date={stringDate}
-                    stadium={item.stadium}
-                    team1Name={item.home.abbr}
-                    team2Name={item.away.abbr}
-                  />
-                );
-              } else {
-                match = (
-                  <Match
-                    key={item.away.abbr}
-                    team1={`${item.home.abbr}.svg`}
-                    team2={`${item.away.abbr}.svg`}
-                    team1score={0}
-                    team2score={0}
-                    date={stringDate}
-                    stadium={item.stadium}
-                  />
-                );
-              }
-              return match;
-            })
-          }
-        </div>,
-      },
-    );
+    this.setState({matches:arr, gameKeys});
   }
 
   makeRequest(url) {
@@ -121,13 +73,12 @@ class App extends Component {
   }
 
   render() {
-    const { gameHTML } = this.state;
     return (
       <div className="App">
         <header className="App-header">
           <img src={NFL} className="Top-logo" alt="logo" onClick={this.refreshClick} />
         </header>
-        { gameHTML }
+        <MatchesHolder matches={this.state.matches} dates={this.state.gameKeys}/>
         <div className="TagLine">
           {/* <h3>Made with React by Conal {"<"}3 </h3> */}
           <a href="https://github.com/ConalCosgrove/react-nfl-website">
