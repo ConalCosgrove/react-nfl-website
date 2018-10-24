@@ -23,7 +23,7 @@
   background-color: #222;
   
   height: 150px;
-  
+  -webkit-app-region: drag;
   color: white;
   margin-bottom: 5px;
 }
