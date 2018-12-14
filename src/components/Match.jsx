@@ -6,10 +6,20 @@ import Score from './match/Score';
 import './match/Match.css';
 
 class Match extends Component {
+  getDownEnd(d, y, f) {
+    if (d && y && f) {
+      switch (d){
+        case 1: return `${d}st and ${y} at ${f}`;
+        case 2: return `${d}nd and ${y}  at ${f}`;
+        case 3: return `${d}rd and ${y}  at ${f}`;
+        default: return `${d}th and ${y}  at ${f}`;
+      }
+    }
+  }
   createStats() {
     let score;
     const {
-      quarter, team1score, team2score, clock, stadium,
+      quarter, team1score, team2score, clock, stadium, down, yards, fieldPos, possession
     } = this.props;
     if(!quarter) {
       score = (
@@ -37,11 +47,13 @@ class Match extends Component {
           <Score team1score={team1score} team2score={team2score} />
           <div>
             <h3>
-              Q :
-              {quarter}
+            {this.note === 'XP' ? `Extra point attempt for ${possession}` : this.getDownEnd(down, yards, fieldPos)}
+              <br />
+              {`Q : ${quarter}`}
               <br />
               Clock :
               {clock}
+              <br />
             </h3>
           </div>
         </div>
@@ -52,7 +64,7 @@ class Match extends Component {
 
   render() {
     const {
-      quarter, team1, team2, team1Name, team2Name, stadium, date,
+      quarter, team1, team2, team1Name, team2Name, stadium, date, possession
     } = this.props;
     return (
       <div className="MatchBox">
@@ -67,9 +79,9 @@ class Match extends Component {
           )
         }
         <div className="TeamVersus">
-          <LeftTeam className="LeftTeam" pic={team1} teamName={team1Name} />
+          <LeftTeam className="LeftTeam" pic={team1} teamName={team1Name} gotBall={possession===team1Name}/>
           <h1> VS </h1>
-          <RightTeam className="RightTeam" pic={team2} teamName={team2Name} />
+          <RightTeam className="RightTeam" pic={team2} teamName={team2Name} gotBall={possession===team2Name} />
         </div>
         {this.createStats()}
       </div>

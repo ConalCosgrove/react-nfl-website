@@ -22,6 +22,11 @@ class MatchesHolder extends Component {
                     team2={`${item.away.abbr}.svg`}
                     team1score={item.home.score.T}
                     team2score={item.away.score.T}
+                    down={item.down}
+                    yards={item.togo}
+                    fieldPos={item.yl}
+                    note={item.note}
+                    possession={item.posteam}
                     clock={item.clock}
                     quarter={item.qtr}
                     date={stringDate}
