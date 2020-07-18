@@ -20,29 +20,29 @@ class MatchesHolder extends Component {
                         || (1900 + today.getYear()) >= date.year) {
                         match = (
                         <Match
-                            key={item.away.abbr}
-                            team1={`${item.home.abbr}.svg`}
-                            team2={`${item.away.abbr}.svg`}
-                            team1score={item.home.score.T}
-                            team2score={item.away.score.T}
-                            clock={item.clock}
-                            quarter={item.qtr}
+                            key={item?.away?.abbr}
+                            team1={`${item?.home?.abbr}.svg`}
+                            team2={`${item?.away?.abbr}.svg`}
+                            team1score={item?.home?.score?.T}
+                            team2score={item?.away?.score?.T}
+                            clock={item?.clock}
+                            quarter={item?.qtr}
                             date={stringDate}
-                            stadium={item.stadium}
-                            team1Name={item.home.abbr}
-                            team2Name={item.away.abbr}
+                            stadium={item?.stadium}
+                            team1Name={item?.home.abbr}
+                            team2Name={item?.away.abbr}
                         />
                         );
                     } else {
                         match = (
                         <Match
-                            key={item.away.abbr}
-                            team1={`${item.home.abbr}.svg`}
-                            team2={`${item.away.abbr}.svg`}
+                            key={item?.away?.abbr}
+                            team1={`${item?.home?.abbr}.svg`}
+                            team2={`${item?.away?.abbr}.svg`}
                             team1score={0}
                             team2score={0}
                             date={stringDate}
-                            stadium={item.stadium}
+                            stadium={item?.stadium}
                         />
                         );
                     }
