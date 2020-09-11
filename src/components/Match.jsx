@@ -92,7 +92,7 @@ class Match extends Component {
 }
 Match.propTypes = {
   stadium: PropTypes.string.isRequired,
-  date: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(Date),
   team1: PropTypes.string.isRequired,
   team2: PropTypes.string.isRequired,
   team1Name: PropTypes.string.isRequired,
