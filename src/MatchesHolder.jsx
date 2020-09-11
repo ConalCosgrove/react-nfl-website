@@ -1,67 +1,58 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Match from './components/Match';
-import parseDate from './helpers';
-class MatchesHolder extends Component {
-
-    createMatches() {
-        const matches = this.props.matches ? this.props.matches : [];
-        return (
-        matches.map((item, index) => {
-            let match;
-            const date = parseDate(this.props.dates[index]);
-            const stringDate = `${date.day} - ${date.month} - ${date.year.substring(2, 4)}`;
-            const today = new Date();
-            if ((today.getMonth() >= date.month
-                && today.getDate() >= date.day
-                && ((1900 + today.getYear()) === date.year))
-                || (1900 + today.getYear()) >= date.year) {
-                match = (
-                <Match
-                    key={item.away.abbr}
-                    team1={`${item.home.abbr}.svg`}
-                    team2={`${item.away.abbr}.svg`}
-                    team1score={item.home.score.T}
-                    team2score={item.away.score.T}
-                    down={item.down}
-                    yards={item.togo}
-                    fieldPos={item.yl}
-                    note={item.note}
-                    possession={item.posteam}
-                    clock={item.clock}
-                    quarter={item.qtr}
-                    date={stringDate}
-                    stadium={item.stadium}
-                    team1Name={item.home.abbr}
-                    team2Name={item.away.abbr}
-                />
-                );
-            } else {
-                match = (
-                <Match
-                    key={item.away.abbr}
-                    team1={`${item.home.abbr}.svg`}
-                    team2={`${item.away.abbr}.svg`}
-                    team1score={0}
-                    team2score={0}
-                    date={stringDate}
-                    stadium={item.stadium}
-                />
-                );
-            }
-            return match;
-            })
-        )
-    }
-
-    render(){
-        return (
+function createMatches(props) {
+    const matches = props.matches ? props.matches : [];
+    return (
+    matches.map((item) => {
+        let match;
+        const date = new Date(item.gameTime);
+        const today = new Date();
+        if (today.toISOString() >= date.toISOString()) {
+            match = (
+            <Match
+                key={item.awayTeam.abbreviation}
+                team1={`${item.homeTeam.abbreviation}.svg`}
+                team2={`${item.awayTeam.abbreviation}.svg`}
+                team1score={item.homeTeam?.score?.T}
+                team2score={item.awayTeam?.score?.T}
+                down={item.down}
+                yards={item.togo}
+                fieldPos={item.yl}
+                note={item.note}
+                possession={item.posteam}
+                clock={item.clock}
+                quarter={item.qtr}
+                date={date}
+                stadium={item.venue.displayName}
+                team1Name={item.homeTeam.abbreviation}
+                team2Name={item.awayTeam.abbreviation}
+            />
+            );
+        } else {
+            match = (
+            <Match
+                key={item.awayTeam.abbreviation}
+                team1={`${item.homeTeam.abbreviation}.svg`}
+                team2={`${item.awayTeam.abbreviation}.svg`}
+                team1score={0}
+                team2score={0}
+                date={date}
+                stadium={item.venue.displayName}
+                team1Name={item.homeTeam.abbreviation}
+                team2Name={item.awayTeam.abbreviation}
+            />
+            );
+        }
+        return match;
+        })
+    )
+}
+function MatchesHolder(props) {
+    return (
         <div className="Matches-Holder">
-                {
-                    this.createMatches()
-                }
+            {createMatches(props)}
         </div> 
-        )
-    }
+        );
 }
 
 export default MatchesHolder;
