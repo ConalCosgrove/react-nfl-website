@@ -5,7 +5,7 @@ import octocat from './images/octocat.png';
 import MatchesHolder from './MatchesHolder';
 import NFL from './images/NFL.svg';
 import './App.css';
-const url = process.env.BACKEND_URL || 'http://localhost:8000';
+const url = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
 
 function App() {
 
