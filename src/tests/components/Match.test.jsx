@@ -6,7 +6,7 @@ it('renders with all props without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Match    
                     stadium="Test Stadium" 
-                    date="14-10-1996" 
+                    date={new Date()} 
                     team1="NE.svg" 
                     team2="PHI.svg" 
                     team1Name="Patriots" 
@@ -23,7 +23,7 @@ it('renders without quarter prop without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Match    
                       stadium="Test Stadium" 
-                      date="14-10-1996" 
+                      date={new Date()} 
                       team1="NE.svg" 
                       team2="PHI.svg" 
                       team1Name="Patriots" 
@@ -40,7 +40,7 @@ it('renders without quarter prop without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Match    
                       stadium="Test Stadium" 
-                      date="14-10-1996" 
+                      date={new Date()}
                       team1="NE.svg" 
                       team2="PHI.svg" 
                       team1score={null}
@@ -57,7 +57,7 @@ it('renders without quarter prop without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Match    
                       stadium="Test Stadium" 
-                      date="14-10-1996" 
+                      date={new Date()} 
                       team1="NE.svg" 
                       team2="PHI.svg" 
                       team1Name="Patriots" 
@@ -74,7 +74,7 @@ it('renders without quarter prop without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Match    
                       stadium="Test Stadium" 
-                      date="14-10-1996" 
+                      date={new Date()} 
                       team1="NE.svg" 
                       team2="PHI.svg" 
                       team1Name="Patriots" 
@@ -90,7 +90,7 @@ it('renders without quarter prop without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Match    
                       stadium="Test Stadium" 
-                      date="14-10-1996" 
+                      date={new Date()}
                       team1="NE.svg" 
                       team2="PHI.svg" 
                       team1Name="Patriots" 

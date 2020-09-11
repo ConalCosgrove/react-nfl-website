@@ -64,16 +64,18 @@ class Match extends Component {
 
   render() {
     const {
-      quarter, team1, team2, team1Name, team2Name, stadium, date, possession
+      quarter, team1, team2, team1Name, team2Name, stadium, date, possession, phase
     } = this.props;
+    const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' }) 
+    const [{ value: month },, { value: day }, , {value: year}] = dateTimeFormat.formatToParts(date ) 
     return (
       <div className="MatchBox">
-        {quarter === null && <h2>{date}</h2>}
+        {!quarter && <h2>{`${day}-${month}-${year}`}</h2>}
         {(quarter === 'Final' || quarter === 'final overtime')  && <h2>{stadium}</h2>}
         {
-          quarter !== null && quarter !== 'Final' && quarter !== 'final overtime' && (
+          quarter && quarter !== 'Final' && quarter !== 'final overtime' && (
           <div className="LiveHolder">
-            <h2 style={{ paddingRight: '10px' }} className="LiveText"> Live @ </h2>
+            <h2 style={{ paddingRight: '10px' }} className="LiveText"> {phase} @ </h2>
             <h2>{stadium}</h2>
           </div>
           )
@@ -90,11 +92,12 @@ class Match extends Component {
 }
 Match.propTypes = {
   stadium: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date),
   team1: PropTypes.string.isRequired,
   team2: PropTypes.string.isRequired,
   team1Name: PropTypes.string.isRequired,
   team2Name: PropTypes.string.isRequired,
+  phase: PropTypes.string,
   quarter: PropTypes.string,
   team1score: PropTypes.number,
   team2score: PropTypes.number,
@@ -102,7 +105,6 @@ Match.propTypes = {
 };
 
 Match.defaultProps = {
-  quarter: 'None',
   team1score: 0,
   team2score: 0,
   clock: '00:00',
