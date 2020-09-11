@@ -67,7 +67,7 @@ class Match extends Component {
       quarter, team1, team2, team1Name, team2Name, stadium, date, possession, phase
     } = this.props;
     const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'short', day: '2-digit' }) 
-    const [{ value: month },{ }, { value: day }, {}, {value: year}] = dateTimeFormat.formatToParts(date ) 
+    const [{ value: month },, { value: day }, , {value: year}] = dateTimeFormat.formatToParts(date ) 
     return (
       <div className="MatchBox">
         {!quarter && <h2>{`${day}-${month}-${year}`}</h2>}
